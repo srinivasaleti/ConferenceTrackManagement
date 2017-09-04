@@ -22,6 +22,7 @@ class Session {
 
     void addATalk(Talk talk) {
         if (remainingDuration.isMoreThanOrEqualOf(talk.duration())) {
+            talk.setStartTime(startTime);
             this.talksContainer.add(talk);
             changeRemainingTime(talk.duration());
         }

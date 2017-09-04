@@ -2,8 +2,10 @@ package com.tw;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class SessionTest {
@@ -56,6 +58,19 @@ class SessionTest {
 
         verify(this.talksContainer).add(javaTalk);
         verify(this.talksContainer, never()).add(pythonTalk);
+    }
+
+    @Test
+    void changeStartTimeOfTalk() {
+        this.talksContainer = new ArrayList<>();
+        Time startTime = new Time(Duration.hour(9), Duration.minute(0), "AM");
+        this.session = new Session(this.talksContainer, startTime, Duration.minute(180));
+        Talk javaTalk = mock(Talk.class);
+
+        when(javaTalk.duration()).thenReturn(Duration.minute(60));
+        this.session.addATalk(javaTalk);
+
+        verify(javaTalk).setStartTime(startTime);
     }
 
 }
