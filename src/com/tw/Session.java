@@ -23,12 +23,10 @@ class Session {
     }
 
     void addATalk(Talk talk) {
-        if (remainingDuration.isMoreThanOrEqualOf(talk.duration())) {
-            talk.setStartTime(startTime);
-            this.talksContainer.add(talk);
-            this.startTime = startTime.timeAfter(talk.duration());
-            changeRemainingTime(talk.duration());
-        }
+        talk.setStartTime(startTime);
+        this.talksContainer.add(talk);
+        this.startTime = startTime.timeAfter(talk.duration());
+        changeRemainingTime(talk.duration());
     }
 
     private void changeRemainingTime(Duration duration) {
