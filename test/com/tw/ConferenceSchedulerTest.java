@@ -50,13 +50,13 @@ class ConferenceSchedulerTest {
 
         when(talks.size()).thenReturn(1, 0);
         when(talks.iterator()).thenReturn(iterator);
-        when(iterator.hasNext()).thenReturn(true,false);
+        when(iterator.hasNext()).thenReturn(true, false);
         when(iterator.next()).thenReturn(javaTalk);
         when(javaTalk.duration()).thenReturn(Duration.minute(60));
 
         conferenceScheduler.scheduleTalksInto(conference, talks);
 
-        verify(javaTalk,times(5)).duration();
+        verify(javaTalk, times(5)).duration();
     }
 
     @Test
@@ -67,8 +67,8 @@ class ConferenceSchedulerTest {
 
         when(talks.size()).thenReturn(1, 0);
         when(talks.iterator()).thenReturn(iterator);
-        when(iterator.hasNext()).thenReturn(true,false);
-        when(iterator.next()).thenReturn(new Talk("Java",Duration.minute(90)));
+        when(iterator.hasNext()).thenReturn(true, false);
+        when(iterator.next()).thenReturn(new Talk("Java", Duration.minute(90)));
 
         conferenceScheduler.scheduleTalksInto(conference, talks);
 
