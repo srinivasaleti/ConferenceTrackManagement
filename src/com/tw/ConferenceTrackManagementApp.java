@@ -7,7 +7,8 @@ import java.util.List;
 public class ConferenceTrackManagementApp {
 
     public static void main(String[] args) {
-        Conference conference = new Conference();
+        List<Track> tracksContainer = new ArrayList<>();
+        Conference conference = new Conference(tracksContainer);
         ConferenceScheduler conferenceScheduler = new ConferenceScheduler();
 
         conferenceScheduler.scheduleTalksInto(conference, talks());
