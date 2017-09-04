@@ -60,4 +60,14 @@ class TimeTest {
         assertEquals(oneThirtyPM, time.representation());
     }
 
+    @Test
+    void expectedTimeAfterThirtyMinutes(){
+        assertEquals("9:30 AM",  time.timeAfter(Duration.minute(30)).representation());
+    }
+
+    @Test
+    void expectedTimeAfterSixtyLightnings() {
+        assertEquals("2:00 PM",  time.timeAfter(Duration.lightning(60)).representation());
+    }
+
 }
