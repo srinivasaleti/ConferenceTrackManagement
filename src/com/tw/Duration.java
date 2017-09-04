@@ -6,8 +6,8 @@ class Duration {
     private static final String MINUTE = "Minutes";
     private static final String LIGHTNING = "Lightnings";
     private static final String SPACE = " ";
-
     private static final String HOUR = "HOUR";
+
     private static final int HOUR_TO_MINUTE_CONVERSION_FACTOR = 60;
     private static final int MINUTE_TO_MINUTE_CONVERSION_FACTOR = 1;
     private static final int LIGHTNING_TO_MINUTE_CONVERSION_FACTOR = 5;
