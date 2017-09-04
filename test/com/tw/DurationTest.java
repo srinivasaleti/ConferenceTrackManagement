@@ -90,4 +90,20 @@ class DurationTest {
         assertEquals(baseValue, twoLightnings.baseValue());
     }
 
+    @Test
+    void representationOfNineMinutes() {
+        Duration minute = Duration.minute(9);
+        String nineMinutes = "9 Minutes";
+
+        assertEquals(nineMinutes, minute.representation());
+    }
+
+    @Test
+    void representationOfFiveLightnings() {
+        Duration lightning = Duration.lightning(9);
+        String nineLightnings = "9 Lightnings";
+
+        assertEquals(nineLightnings, lightning.representation());
+    }
+
 }
