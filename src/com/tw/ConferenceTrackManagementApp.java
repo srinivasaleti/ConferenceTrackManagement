@@ -12,6 +12,7 @@ public class ConferenceTrackManagementApp {
         ConferenceScheduler conferenceScheduler = new ConferenceScheduler();
 
         conferenceScheduler.scheduleTalksInto(conference, talks());
+        System.out.println(conference.representation());
     }
 
     private static List<Talk> talks() {
