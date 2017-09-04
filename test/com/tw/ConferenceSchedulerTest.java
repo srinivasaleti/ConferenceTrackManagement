@@ -56,7 +56,7 @@ class ConferenceSchedulerTest {
 
         conferenceScheduler.scheduleTalksInto(conference, talks);
 
-        verify(javaTalk, times(5)).duration();
+        verify(javaTalk, times(4)).duration();
     }
 
     @Test
