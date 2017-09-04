@@ -2,7 +2,7 @@ package com.tw;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TrackTest {
 
@@ -30,6 +30,20 @@ class TrackTest {
         track.addTalkInASession(pythonTalk);
 
         assertEquals(expected, track.representation());
+    }
+
+    @Test
+    void trackHasDurationOfTenMinutes() {
+        Track track = new Track();
+
+        assertTrue(track.hasDurationOf(Duration.minute(10)));
+    }
+
+    @Test
+    void trackDonNotHasDurationOfThousandMinutes() {
+        Track track = new Track();
+
+        assertFalse(track.hasDurationOf(Duration.minute(1000)));
     }
 
 }

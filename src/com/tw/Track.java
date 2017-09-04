@@ -37,4 +37,8 @@ class Track {
                 + this.afterNoonSession.representation();
     }
 
+    boolean hasDurationOf(Duration duration) {
+        return this.morningSession.hasDurationOf(duration) || this.afterNoonSession.hasDurationOf(duration);
+    }
+
 }
