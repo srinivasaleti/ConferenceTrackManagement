@@ -61,4 +61,8 @@ class Duration {
         return this.value + SPACE + this.unitName;
     }
 
+    int value() {
+        return this.value;
+    }
+
 }

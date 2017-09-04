@@ -106,4 +106,20 @@ class DurationTest {
         assertEquals(nineLightnings, lightning.representation());
     }
 
+    @Test
+    void expectedValueFiveMinutes() {
+        int value = 5;
+        Duration fiveMinutes = Duration.minute(value);
+
+        assertEquals(value, fiveMinutes.value());
+    }
+
+    @Test
+    void expectedValueOfTwoLightnings() {
+        int value = 2;
+        Duration twoLightnings = Duration.lightning(value);
+
+        assertEquals(value, twoLightnings.value());
+    }
+
 }

@@ -22,8 +22,12 @@ class Talk {
         this.startTime = startTime;
     }
 
+    Time startTime() {
+        return this.startTime;
+    }
+
     String representation() {
-        return null;
+        return this.startTime.representation() + SEPARATOR + this.name + SEPARATOR + this.duration.representation();
     }
 
 }
