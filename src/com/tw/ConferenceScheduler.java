@@ -9,12 +9,12 @@ class ConferenceScheduler {
     void scheduleTalksInto(Conference conference, List<Talk> talks) {
         while (talks.size() != 0) {
             Track track = new Track();
-            addTalksToA(track, talks);
+            addTalksTo(track, talks);
             conference.addTrack(track);
         }
     }
 
-    private void addTalksToA(Track track, List<Talk> talks) {
+    private void addTalksTo(Track track, List<Talk> talks) {
         for (Iterator<Talk> talkIterator = talks.iterator(); talkIterator.hasNext(); ) {
             Talk talk = talkIterator.next();
             if (track.hasDurationOf(talk.duration())) {
