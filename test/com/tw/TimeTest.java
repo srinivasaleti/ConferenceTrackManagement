@@ -40,4 +40,24 @@ class TimeTest {
         assertEquals(time, sameTime);
     }
 
+    @Test
+    void expectedRepresentationsOfNineAM() {
+        Duration hour = Duration.hour(9);
+        Duration minute = Duration.minute(0);
+        Time time = new Time(hour, minute, "AM");
+        String nineAm = "9:00 AM";
+
+        assertEquals(nineAm, time.representation());
+    }
+
+    @Test
+    void expectedRepresentationOfOneThirtyPM() {
+        Duration hour = Duration.hour(1);
+        Duration minute = Duration.minute(30);
+        Time time = new Time(hour, minute, "PM");
+        String oneThirtyPM = "1:30 PM";
+
+        assertEquals(oneThirtyPM, time.representation());
+    }
+
 }
