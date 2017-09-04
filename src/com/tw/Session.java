@@ -8,7 +8,7 @@ class Session {
 
     private static final String LINE_SEPARATOR = "\n";
 
-    private final Time startTime;
+    private Time startTime;
     private Duration remainingDuration;
     private final List<Talk> talksContainer;
 
@@ -26,6 +26,7 @@ class Session {
         if (remainingDuration.isMoreThanOrEqualOf(talk.duration())) {
             talk.setStartTime(startTime);
             this.talksContainer.add(talk);
+            this.startTime = startTime.timeAfter(talk.duration());
             changeRemainingTime(talk.duration());
         }
     }
@@ -41,6 +42,10 @@ class Session {
             result.append(talk.representation()).append(LINE_SEPARATOR);
         }
         return result.toString();
+    }
+
+    boolean hasTimeOf(Duration duration) {
+        return false;
     }
 
 }
