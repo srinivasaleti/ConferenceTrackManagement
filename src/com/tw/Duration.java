@@ -48,4 +48,12 @@ class Duration {
         return new Duration(value, HOUR_TO_MINUTE_CONVERSION_FACTOR, HOUR);
     }
 
+    boolean isMoreThanOrEqualOf(Duration duration) {
+        return this.baseValue >= duration.baseValue;
+    }
+
+    int baseValue() {
+        return this.baseValue;
+    }
+
 }

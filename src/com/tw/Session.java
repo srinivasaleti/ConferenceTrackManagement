@@ -7,7 +7,7 @@ import java.util.List;
 class Session {
 
     private final Time startTime;
-    private final Duration remainingDuration;
+    private Duration remainingDuration;
     private final List<Talk> talksContainer;
 
     Session(List<Talk> talksContainer, Time startTime, Duration remainingDuration) {
@@ -20,9 +20,16 @@ class Session {
         }
     }
 
-    void addATalk(Talk talk)
-    {
-        this.talksContainer.add(talk);
+    void addATalk(Talk talk) {
+        if (remainingDuration.isMoreThanOrEqualOf(talk.duration())) {
+            this.talksContainer.add(talk);
+            changeRemainingTime(talk.duration());
+        }
+    }
+
+    private void changeRemainingTime(Duration duration) {
+        int baseValueOfRemainingDuration = remainingDuration.baseValue() - duration.baseValue();
+        this.remainingDuration = Duration.minute(baseValueOfRemainingDuration);
     }
 
 }

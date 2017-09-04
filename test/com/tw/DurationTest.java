@@ -3,8 +3,7 @@ package com.tw;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DurationTest {
 
@@ -56,6 +55,39 @@ class DurationTest {
         Duration fiveMinute = Duration.minute(10);
 
         assertEquals(twoLightning, fiveMinute);
+    }
+
+    @Test
+    void fiveMinutesMoreThanTwoMinutes() {
+        Duration fiveMinutes = Duration.minute(5);
+        Duration twoMinutes = Duration.minute(2);
+
+        assertTrue(fiveMinutes.isMoreThanOrEqualOf(twoMinutes));
+    }
+
+    @Test
+    void fiveMinutesIsNotMoreThanOrEqualOfTwoLightnings() {
+        Duration fiveMinute = Duration.minute(5);
+        Duration twoLightning = Duration.lightning(2);
+
+        assertFalse(fiveMinute.isMoreThanOrEqualOf(twoLightning));
+    }
+
+    @Test
+    void expectedBaseValueOfFiveMinutes() {
+        int value = 5;
+        Duration fiveMinutes = Duration.minute(value);
+
+        assertEquals(value, fiveMinutes.baseValue());
+    }
+
+    @Test
+    void expectedBaseValueOfTwoLightnings() {
+        int value = 2;
+        int baseValue = 10;
+        Duration twoLightnings = Duration.lightning(value);
+
+        assertEquals(baseValue, twoLightnings.baseValue());
     }
 
 }

@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class SessionTest {
 
@@ -38,6 +37,25 @@ class SessionTest {
         this.session.addATalk(pythonTalk);
 
         verify(this.talksContainer).add(pythonTalk);
+    }
+
+    @Test
+    void canNotAddATalkIfThereIsNoRemainingTimeInSession() {
+        this.talksContainer = mock(List.class);
+        Time startTime = new Time(Duration.hour(9), Duration.minute(0), "AM");
+        this.session = new Session(this.talksContainer, startTime, Duration.minute(180));
+        Duration javaTalkDuration = Duration.minute(180);
+        Duration pythonTalkDuration = Duration.lightning(5);
+        String java = "Java";
+        String python = "Python";
+        Talk javaTalk = new Talk(java, javaTalkDuration);
+        Talk pythonTalk = new Talk(python, pythonTalkDuration);
+
+        this.session.addATalk(javaTalk);
+        this.session.addATalk(pythonTalk);
+
+        verify(this.talksContainer).add(javaTalk);
+        verify(this.talksContainer, never()).add(pythonTalk);
     }
 
 }
