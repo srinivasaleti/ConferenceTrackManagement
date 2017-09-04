@@ -10,6 +10,7 @@ class ConferenceScheduler {
         while (talks.size() != 0) {
             Track track = new Track();
             addTalksTo(track, talks);
+            track.addNetworkingEvent();
             conference.addTrack(track);
         }
     }

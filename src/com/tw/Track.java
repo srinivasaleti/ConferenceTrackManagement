@@ -2,6 +2,7 @@ package com.tw;
 
 import java.util.ArrayList;
 
+//Representation of a session holder
 class Track {
 
     private static final Time MORNING_SESSION_STARTING_TIME = new Time(Duration.hour(9), Duration.minute(0), "AM");
@@ -29,6 +30,11 @@ class Track {
             return;
         }
         this.afterNoonSession.addATalk(talk);
+    }
+
+    void addNetworkingEvent() {
+        Talk networkingEvent = new Talk("Networking Event", Duration.minute(60));
+        this.afterNoonSession.addATalk(networkingEvent);
     }
 
     public String representation() {
