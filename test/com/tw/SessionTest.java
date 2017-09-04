@@ -73,4 +73,17 @@ class SessionTest {
         verify(javaTalk).setStartTime(startTime);
     }
 
+    @Test
+    void representationSession() {
+        this.talksContainer = new ArrayList<>();
+        Time startTime = new Time(Duration.hour(9), Duration.minute(0), "AM");
+        this.session = new Session(this.talksContainer, startTime, Duration.minute(180));
+        Duration duration = Duration.minute(60);
+        Talk javaTalk = new Talk("Java", duration);
+        String LINE_SEPARATOR = "\n";
+        this.session.addATalk(javaTalk);
+
+        assertEquals(javaTalk.representation() + LINE_SEPARATOR, this.session.representation());
+    }
+
 }

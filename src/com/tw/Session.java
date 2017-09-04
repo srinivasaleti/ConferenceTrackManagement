@@ -6,6 +6,8 @@ import java.util.List;
 //Represents A period devoted to a particular activity.
 class Session {
 
+    private static final String LINE_SEPARATOR = "\n";
+
     private final Time startTime;
     private Duration remainingDuration;
     private final List<Talk> talksContainer;
@@ -31,6 +33,14 @@ class Session {
     private void changeRemainingTime(Duration duration) {
         int baseValueOfRemainingDuration = remainingDuration.baseValue() - duration.baseValue();
         this.remainingDuration = Duration.minute(baseValueOfRemainingDuration);
+    }
+
+    String representation() {
+        StringBuilder result = new StringBuilder();
+        for (Talk talk : this.talksContainer) {
+            result.append(talk.representation()).append(LINE_SEPARATOR);
+        }
+        return result.toString();
     }
 
 }
