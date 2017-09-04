@@ -3,6 +3,12 @@ package com.tw;
 //Represents the time during which something continues
 class Duration {
 
+    private static final int MINUTE_TO_MINUTE_CONVERSION_FACTOR = 1;
+    private static final int LIGHTNING_TO_MINUTE_CONVERSION_FACTOR = 5;
+
+    private static final String MINUTE = "Minutes";
+    private static final String LIGHTNING = "Lightnings";
+
     private int value;
     private int baseValue;
     private String representation;
@@ -26,6 +32,14 @@ class Duration {
         }
         Duration that = (Duration) object;
         return this.baseValue == that.baseValue;
+    }
+
+    static Duration minute(int value) {
+        return new Duration(value, MINUTE_TO_MINUTE_CONVERSION_FACTOR, MINUTE);
+    }
+
+    static Duration lightning(int value) {
+        return new Duration(value, LIGHTNING_TO_MINUTE_CONVERSION_FACTOR, LIGHTNING);
     }
 
 }

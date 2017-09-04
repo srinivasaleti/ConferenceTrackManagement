@@ -42,4 +42,20 @@ class DurationTest {
         assertEquals(duration, sameDuration);
     }
 
+    @Test
+    void oneLighteningEqualToFiveMinute() {
+        Duration oneLightening = Duration.lightning(1);
+        Duration fiveMinute = Duration.minute(5);
+
+        assertEquals(oneLightening, fiveMinute);
+    }
+
+    @Test
+    void twoLightningEqualToTenMinute() {
+        Duration twoLightning = Duration.lightning(2);
+        Duration fiveMinute = Duration.minute(10);
+
+        assertEquals(twoLightning, fiveMinute);
+    }
+
 }
