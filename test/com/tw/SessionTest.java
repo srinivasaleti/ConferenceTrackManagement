@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class SessionTest {
@@ -84,6 +86,24 @@ class SessionTest {
         this.session.addATalk(javaTalk);
 
         assertEquals(javaTalk.representation() + LINE_SEPARATOR, this.session.representation());
+    }
+
+    @Test
+    void sessionHasTimeOfThirtyMinutes() {
+        this.talksContainer = new ArrayList<>();
+        Time startTime = new Time(Duration.hour(9), Duration.minute(0), "AM");
+        this.session = new Session(this.talksContainer, startTime, Duration.minute(180));
+
+        assertTrue(session.hasDurationOf(Duration.minute(30)));
+    }
+
+    @Test
+    void sessionDoNotHaveTimeOfThirtyMinutes() {
+        this.talksContainer = new ArrayList<>();
+        Time startTime = new Time(Duration.hour(9), Duration.minute(0), "AM");
+        this.session = new Session(this.talksContainer, startTime, Duration.minute(10));
+
+        assertFalse(session.hasDurationOf(Duration.minute(30)));
     }
 
 }

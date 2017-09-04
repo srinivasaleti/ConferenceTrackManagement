@@ -44,8 +44,8 @@ class Session {
         return result.toString();
     }
 
-    boolean hasTimeOf(Duration duration) {
-        return false;
+    boolean hasDurationOf(Duration duration) {
+        return duration.baseValue() <= remainingDuration.baseValue();
     }
 
 }
